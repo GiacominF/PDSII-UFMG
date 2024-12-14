@@ -27,7 +27,7 @@ public:
 Figura_geometrica(const Ponto& centro) : centro(centro) {}
 
 virtual void desenhar() {
-
+    std::cout << centro.get_x() << " " << centro.get_y();
 };
 virtual float calcular_area() = 0;
 const Ponto& get_centro() const {
@@ -135,6 +135,14 @@ while(true) {
 
     else if (entrada == 'R'){
 
+        float x, y;
+        int lado1, lado2;
+        std::cin >> x >> y >> lado1 >> lado2;
+        Retangulo* ret = new Retangulo(lado1, lado2, x, y); 
+        figuras.push_back(ret); 
+
+        ret->calcular_area();
+        ret->desenhar();
     }
 
     else if (entrada == 'C'){
