@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <iomanip>
 
 
 class Ponto {
@@ -28,8 +29,8 @@ public:
 Figura_geometrica(const Ponto& centro) : centro(centro) {}
 
 virtual void desenhar() {
-    std::cout << centro.get_x() << " " << centro.get_y();
-};
+        std::cout << std::fixed << std::setprecision(0) << centro.get_x() << " " << centro.get_y();
+    }
 virtual float calcular_area() = 0;
 const Ponto& get_centro() const {
     return centro;
@@ -134,12 +135,12 @@ while(true) {
 
     else if (entrada == 'A'){
 
-        for (std::vector<Figura_geometrica*>::const_iterator it = figuras.cbegin(); it != figuras.cend(); ++it) {
         float area = 0;
-        area += (*it)->calcular_area();
-        std::cout << area << std::endl;
-    }
+        for (const auto& fig : figuras) {
+            area += fig->calcular_area();
+        }
 
+          std::cout << std::fixed << std::setprecision(2) << area << std::endl;
     }
 
     else if (entrada == 'R'){
