@@ -159,11 +159,18 @@ while(true) {
 
         circ->calcular_area();
         circ->desenhar();
-
     }
 
     else if (entrada == 'T'){
 
+        float x, y;
+        int base, altura;
+        std::cin >> x >> y >> base >> altura;
+
+        Triangulo* tri = new Triangulo(base, altura, x, y);
+
+        tri->calcular_area();
+        tri->desenhar();
     }
 
     else if (entrada == 'D'){
