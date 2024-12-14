@@ -1,0 +1,7 @@
+# Ignorar tudo no nível superior
+../*
+
+# Exceto esta pasta (PDSII-projetos) e seu conteúdo
+!.gitignore
+!*/
+
