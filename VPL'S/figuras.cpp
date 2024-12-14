@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 
 class Ponto {
@@ -51,7 +52,7 @@ Retangulo(int lado1, int lado2, float x, float y)
 
 float calcular_area() override {
 
-    float area_ret;
+    float area_ret = _lado1 * _lado2;
     return area_ret;
 }
 void desenhar() override {
@@ -75,7 +76,8 @@ Triangulo(int base, int altura, float x, float y)
 
 float calcular_area() override {
 
-    float area_tri;
+    float area_tri; 
+    area_tri = _base * _altura * 0.5;
     return area_tri;
 }
 
@@ -100,6 +102,7 @@ Circulo(int raio, float x, float y)
 float calcular_area() override {
 
     float area_circ;
+    area_circ = M_PI *_raio * _raio;
     return area_circ; 
 }
 
@@ -160,12 +163,11 @@ while(true) {
 
 }
 
-    
-
     for (auto& fig : figuras) {
-        figuras.clear();
         delete fig;
     }
+
+    figuras.clear();
 
 return 0;
 }
