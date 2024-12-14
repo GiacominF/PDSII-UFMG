@@ -150,6 +150,15 @@ while(true) {
 
     else if (entrada == 'C'){
 
+        float x, y;
+        int raio;
+        std::cin >> x >> y >> raio;
+        
+        Circulo* circ = new Circulo(raio, x, y);
+        figuras.push_back(circ);
+
+        circ->calcular_area();
+        circ->desenhar();
 
     }
 
