@@ -145,7 +145,6 @@ while(true) {
         figuras.push_back(ret); 
 
         ret->calcular_area();
-        ret->desenhar();
     }
 
     else if (entrada == 'C'){
@@ -158,7 +157,6 @@ while(true) {
         figuras.push_back(circ);
 
         circ->calcular_area();
-        circ->desenhar();
     }
 
     else if (entrada == 'T'){
@@ -168,14 +166,18 @@ while(true) {
         std::cin >> x >> y >> base >> altura;
 
         Triangulo* tri = new Triangulo(base, altura, x, y);
+        figuras.push_back(tri);
 
         tri->calcular_area();
-        tri->desenhar();
     }
 
-    else if (entrada == 'D'){
-
+    else if (entrada == 'D') {
+    
+        for (std::vector<Figura_geometrica*>::const_iterator it = figuras.cbegin(); it != figuras.cend(); ++it) {
+        (*it)->desenhar(); 
     }
+}
+
 
 }
 
