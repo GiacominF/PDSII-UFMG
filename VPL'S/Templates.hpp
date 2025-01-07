@@ -15,6 +15,10 @@ public:
         vetor_int.at(i) = elemento;
     }
 
+    T GetElemento(int i) const {
+        return vetor_int.at(i);
+    }
+
     ~Vetor() {
         vetor_int.clear();
     }
