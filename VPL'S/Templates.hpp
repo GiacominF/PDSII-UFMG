@@ -11,6 +11,10 @@ public:
 
     Vetor(const std::vector<T>& vector) : tamanho(vector.size()), vetor_int(vector) {}
 
+    void SetElemento(int i, T elemento) {
+        vetor_int.at(i) = elemento;
+    }
+
     ~Vetor() {
         vetor_int.clear();
     }
