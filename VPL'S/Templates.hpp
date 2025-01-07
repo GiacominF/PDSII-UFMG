@@ -1,41 +1,58 @@
 #ifndef VETOR_H
 #define VETOR_H
+#include <iostream>
 #include <vector>
 #include <algorithm>
 
-template<typename T>
+template <typename T>
 class Vetor {
+private:
+    T* elementos;
+    int tamanhoMaximo;
+    int tamanhoAtual;
 
 public:
-    Vetor(int n) : tamanho(n), vetor_int(n) {}
-
-    Vetor(const std::vector<T>& vector) : tamanho(vector.size()), vetor_int(vector) {}
-
-    void SetElemento(int i, T elemento) {
-        vetor_int.at(i) = elemento;
+    Vetor(int n) {
+        tamanhoMaximo = n;
+        tamanhoAtual = 0;
+        elementos = new T[tamanhoMaximo];
     }
 
-    T GetElemento(int i) const {
-        return vetor_int.at(i);
-    }
-
-    void AdicionaElemento(T n) {
-        vetor_int.push_back(n);
-        tamanho++;
-    }
-
-    void ImprimeElementos() {
-        for (const auto& i : vetor_int) {
-            std::cout << i << " ";
+    Vetor(const Vetor& outro) {
+        tamanhoMaximo = outro.tamanhoMaximo;
+        tamanhoAtual = outro.tamanhoAtual;
+        elementos = new T[tamanhoMaximo];
+        for (int i = 0; i < tamanhoAtual; ++i) {
+            elementos[i] = outro.elementos[i];
         }
-        std::cout << "\n";
     }
 
     ~Vetor() {
-        vetor_int.clear();
+        delete[] elementos;
     }
 
-private:
-    int tamanho;
-    std::vector<T> vetor_int;
+    void SetElemento(int i, T x) {
+        elementos[i] = x;
+    }
+
+    T GetElemento(int i) const {
+        return elementos[i];
+    }
+
+    void AdicionaElemento(T x) {
+        if (tamanhoAtual < tamanhoMaximo) {
+            elementos[tamanhoAtual++] = x;
+        } else {
+            std::cerr << "Vetor cheio!" << std::endl;
+        }
+    }
+
+    void Imprime() const {
+        for (int i = 0; i < tamanhoAtual; ++i) {
+            std::cout << elementos[i] << " ";
+        }
+        std::cout << std::endl;
+    }
 };
+
+#endif
