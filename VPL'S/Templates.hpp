@@ -19,6 +19,18 @@ public:
         return vetor_int.at(i);
     }
 
+    void AdicionaElemento(T n) {
+        vetor_int.push_back(n);
+        tamanho++;
+    }
+
+    void ImprimeElementos() {
+        for (const auto& i : vetor_int) {
+            std::cout << i << " ";
+        }
+        std::cout << "\n";
+    }
+
     ~Vetor() {
         vetor_int.clear();
     }
